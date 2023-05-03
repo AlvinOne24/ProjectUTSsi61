@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
     private FloatingActionButton fabTambah;
     private RecyclerView rvPasar;
     private MyDatabaseHelper myDB;
-    private ArrayList<String> arrId, arrNama, arrKota, arrAlamat;
+    private ArrayList<String> arrId, arrNAma, arrKota, arrAlamat;
     private AdapterPasar adPasar;
 
 
@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
         else{
             while (varCursor.moveToNext()){
                 arrId.add(varCursor.getString(0));
-                arrNama.add(varCursor.getString(1));
+                arrNAma.add(varCursor.getString(1));
                 arrKota.add(varCursor.getString(2));
                 arrAlamat.add(varCursor.getString(3));
             }
@@ -58,13 +58,13 @@ public class MainActivity extends AppCompatActivity {
 
     private void tampilPasar(){
         arrId = new ArrayList<>();
-        arrNama = new ArrayList<>();
+        arrNAma = new ArrayList<>();
         arrKota = new ArrayList<>();
         arrAlamat = new ArrayList<>();
 
         SQLLiteToArrayList();
 
-        adPasar = new AdapterPasar(MainActivity.this,arrId,arrNama,arrKota, arrAlamat);
+        adPasar = new AdapterPasar(MainActivity.this,arrId,arrNAma,arrKota, arrAlamat);
         rvPasar.setLayoutManager(new LinearLayoutManager(MainActivity.this));
         rvPasar.setAdapter(adPasar);
 

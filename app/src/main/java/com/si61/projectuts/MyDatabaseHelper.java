@@ -32,8 +32,8 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         String query = "CREATE TABLE " + TABLE_NAME + "("+
                 FIELD_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 FIELD_NAMA + " VARCHAR(50), " +
-                FIELD_KOTA + " VARCHAR(30), " +
-                FIELD_ALAMAT + "TEXT " +
+                FIELD_KOTA + " TEXT, " +
+                FIELD_ALAMAT + " VARCHAR(30) " +
                 ");"
                 ;
         db.execSQL(query);
@@ -60,7 +60,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
 
     public Cursor bacaDataPasar(){
         SQLiteDatabase db = this.getReadableDatabase();
-        String query = "SELECT * FROM " +TABLE_NAME;
+        String query = "SELECT * FROM " + TABLE_NAME;
 
         Cursor varCursor = null;
         if(db!=null){
