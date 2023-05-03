@@ -28,14 +28,6 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        /*
-        CREATE TABLE tbl_destinasi(
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            nama VARCHAR(50),
-            alamat TEXT,
-            jam VARCHAR(30)
-         );
-         */
 
         String query = "CREATE TABLE " + TABLE_NAME + "("+
                 FIELD_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
@@ -66,7 +58,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         return eksekusi;
     }
 
-    public Cursor bacaDataDestinasi(){
+    public Cursor bacaDataPasar(){
         SQLiteDatabase db = this.getReadableDatabase();
         String query = "SELECT * FROM " +TABLE_NAME;
 
@@ -75,26 +67,6 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
             varCursor = db.rawQuery(query, null);
         }
         return varCursor;
-    }
-
-    public long ubahData(String id, String nama, String kota, String alamat){
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues cv = new ContentValues();
-
-        cv.put(FIELD_NAMA, nama);
-        cv.put(FIELD_KOTA, kota);
-        cv.put(FIELD_ALAMAT, alamat);
-
-        long eksekusi = db.update(TABLE_NAME, cv, "id = ?", new String[]{id});
-        return eksekusi;
-    }
-
-    public long hapusData(String id){
-        SQLiteDatabase db = this.getWritableDatabase();
-
-
-        long eksekusi = db.delete(TABLE_NAME, "id = ?", new String[]{id});
-        return eksekusi;
     }
 
 }
